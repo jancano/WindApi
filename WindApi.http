@@ -1,0 +1,7 @@
+@WindApi_HostAddress = http://localhost:5294
+
+### Get weather data
+GET {{WindApi_HostAddress}}/weather?LocationNw=40.7128,-74.0060&LocationNe=40.7128,-73.9860&LocationSw=40.7028,-74.0060&LocationSe=40.7028,-73.9860&ResolutionX=5&ResolutionY=5&TimeAhead=01:00:00&SamplePoints=2
+Accept: application/json
+
+###
