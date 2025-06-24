@@ -29,6 +29,9 @@ public class WeatherController(IWeatherService weatherService) : ControllerBase
         var quadX = x.Meters / request.ResolutionX;
         var y = new Distance(coordNe, coordSe, Shape.Ellipsoid);
         var quadY = y.Meters / request.ResolutionY;
+        
+        coordNe.Move(quadX / 2, x.Bearing, Shape.Ellipsoid);
+        coordNe.Move(quadY / 2, y.Bearing, Shape.Ellipsoid);
 
         if (request.Poi is null)
         {

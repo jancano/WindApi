@@ -14,15 +14,16 @@ services.AddControllers();
 services.AddTransient<IWeatherService, DefaultWeatherService>();
 services.AddSingleton(new OpenWeatherConfig(){ApiKey = Environment.GetEnvironmentVariable("OPENWEATHER_API_KEY") ?? ""});
 
+services.AddLogging();
+services.AddHttpLogging();
 var app = builder.Build();
 
+app.UseHttpLogging();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-app.UseHttpsRedirection();
 
 app.MapControllers();
 
