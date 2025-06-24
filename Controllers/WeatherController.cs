@@ -27,7 +27,7 @@ public class WeatherController(IWeatherService weatherService) : ControllerBase
         
         var x = new Distance(coordNe, coordNw, Shape.Ellipsoid);
         var quadX = x.Meters / request.ResolutionX;
-        var y = new Distance(coordSe, coordNe, Shape.Ellipsoid);
+        var y = new Distance(coordNe, coordSe, Shape.Ellipsoid);
         var quadY = y.Meters / request.ResolutionY;
 
         if (request.Poi is null)
@@ -45,7 +45,7 @@ public class WeatherController(IWeatherService weatherService) : ControllerBase
         {
             for (var j = 0; j < _vecs[i].Length; j++)
             {
-                var targetCoord = coordNw.Clone();
+                var targetCoord = coordNe.Clone();
                 targetCoord.Move(quadX * i, x.Bearing, Shape.Ellipsoid);
                 targetCoord.Move(quadY * j, y.Bearing, Shape.Ellipsoid);
                 
